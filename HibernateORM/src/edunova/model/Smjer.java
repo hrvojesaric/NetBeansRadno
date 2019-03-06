@@ -3,7 +3,10 @@ package edunova.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,17 @@ public class Smjer extends Entitet implements Serializable {
     private BigDecimal cijena;
     private BigDecimal upisnina;
     private int trajanje;
+    
+    @OneToMany(mappedBy = "smjer")
+    private List<Grupa> grupe=new ArrayList<>();
+
+    public List<Grupa> getGrupe() {
+        return grupe;
+    }
+
+    public void setGrupe(List<Grupa> grupe) {
+        this.grupe = grupe;
+    }
 
 
     public String getNaziv() {

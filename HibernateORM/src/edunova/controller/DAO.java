@@ -3,6 +3,7 @@ package edunova.controller;
 
 import edunova.model.Entitet;
 import edunova.pomocno.HibernateUtil;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,7 +11,7 @@ import org.hibernate.Session;
 /**
  * @param <T> bilo koji entitet mapiran putem ORM-a
  */
-public class DAO<T extends Entitet> {
+public class DAO<T> {
 
     private final Session session;
 
@@ -31,6 +32,7 @@ public class DAO<T extends Entitet> {
     @Deprecated
     public List<T> createQuery(String hql) {
         Query q = session.createQuery(hql);
+        Date d = new Date();
         return q.list();
     }
 
